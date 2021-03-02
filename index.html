@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Country Show</title>
+</head>
+
+<body>
+    <!-- main content -->
+    <main>
+        <div class="country-container">
+            <input id="input-country" type="text" placeholder="Enter a country name">
+            <button id="search">Search</button>
+            <div class="content">
+                <h1 id="country-name" style="font-size:40px;">Bangladesh</h1>
+                <div id="flag">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f9/Flag_of_Bangladesh.svg" alt="flag">
+                </div>
+                <h4>Region:<span id="region">Asia</span></h4>
+                <h4>Sub-region:<span id="sub-region">Southern Asia</span></h4>
+                <h2>Capital:<span id="capital">Dhaka</span></h2>
+                <h4>Area:<span id="area">1,47,570<span>(squaremeter)</span></span></h4>
+                <h4>Population:<span id="population">18,05,78,356</span></h4>
+                <h3>Language:<span id="language">Bengali</span></h3>
+            </div>
+        </div>
+    </main>
+
+    <!-- scripting is here -->
+    <script>
+        
+        document.getElementById('search').addEventListener('click',function(){
+            const inputCountry = document.getElementById('input-country').value;
+            fetch('https://restcountries.eu/rest/v2/name/'+inputCountry+'')
+            .then(res => res.json())
+            .then(country => {
+                showCountryDetails(country)
+            })
+            .catch('Invalid Country Name')
+            function showCountryDetails(data){
+                const country = document.getElementById('country-name');
+                country.innerText = data[0].name;
+                const flagImage = document.getElementById('flag');
+                flagImage.innerHTML = `<img src="${data[0].flag}">`
+                const region = document.getElementById('region');
+                region.innerText = data[0].region;
+                const subRegion = document.getElementById('sub-region');
+                subRegion.innerText = data[0].subregion;
+                const capital = document.getElementById('capital');
+                capital.innerText = data[0].capital;
+                const area = document.getElementById('area');
+                area.innerText = data[0].area;
+                const population = document.getElementById('population');
+                population.innerText = data[0].population;
+                const language = document.getElementById('language');
+                language.innerText = data[0].languages[0].name;
+            }
+        })
+        
+    </script>
+</body>
+
+</html>

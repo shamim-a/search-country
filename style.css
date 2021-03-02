@@ -1,0 +1,29 @@
+*{
+    margin: 10px 0px;
+    padding: 0px 10px;
+    /* border-radius: 8px; */
+}
+.country-container{
+    text-align: center;
+    background-image:linear-gradient(45deg, #f5efec,#edfded);
+}
+#input-country{
+    height: 30px;
+    width: 25%;
+    font-size: 20px;
+}
+#search{
+    height: 33px;
+    width: 100px;
+    background-image: linear-gradient(60deg, rgb(253, 202, 196), #bcf8bc);
+    padding: 3px 0px;
+    font-size: 20px;
+}
+#flag img{
+    height: 120px;
+    width: 210px;
+    margin-top: 10px;
+    text-align: center;
+    margin: 0% 18%;
+    padding: 0% 24%;
+}
