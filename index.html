@@ -40,7 +40,7 @@
             .then(country => {
                 showCountryDetails(country)
             })
-            .catch('Invalid Country Name')
+            .catch (error => alert('Input invalid Name'))
             function showCountryDetails(data){
                 const country = document.getElementById('country-name');
                 country.innerText = data[0].name;
